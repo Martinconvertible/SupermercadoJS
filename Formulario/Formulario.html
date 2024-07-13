@@ -108,7 +108,7 @@
 </style>
 <body>
     <legend>Cuéntanos tus inquietudes</legend>
-    <form class="contact-form" action="https://formsubmit.co/mfcardone@altercity.com.ar" method="POST" target="_blank">
+    <form class="contact-form" method="POST" target="_blank">
         <input type="text" name="name" placeholder="Escribe tu nombre" title="Solo acepta texto " pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
         <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
         <input type="text" name="subject" placeholder="Asunto a tratar" title="El asunto es requerido" required>
@@ -145,10 +145,10 @@ const d= document ;
           $loader.classList.remove ("none");
 
           /* aquí dentro de fetch"" pondremos la ubicación (en este caso el dominio )del archivo php que es el que llevará la información de la petición a la API*/
-          fetch("", {
-            method:POST,
+          fetch("https://github.com/Martinconvertible/SupermercadoJS/blob/main/Formulario/send_mail.php", {
+            method:"POST",
             body: new FormData(e.target),
-            mode:"cors", /* IMPORTANTE!! activar modo cors permite hacer intercambio cuando paginas tienen diferentes servidores, sino podria dar error de intercambio
+            mode:"no-cors", /* IMPORTANTE!! activar modo cors permite hacer intercambio cuando paginas tienen diferentes servidores, sino podria dar error de intercambio
             esto por parte del formulario pero en el archivo php debo poner una header (Acces-control-allow-origin), para estar en consonancia con la cabecera
             que nos pide la API (linea 37)*/
           })
