@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<style>
+    html {
+      box-sizing: border-box;
+      font-family: sans-serif;
+      font-size: 16px;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    /* **********     ContactForm Validations     ********** */
+    .contact-form {
+      --form-ok-color: #4caf50;
+      --form-error-color: #f44336;
+      margin-left: auto;
+      margin-right: auto;
+      width: 80%;
+    }
+
+    .contact-form>* {
+      padding: 0.5rem;
+      margin: 1rem auto;
+      display: block;
+      width: 100%;
+    }
+
+    .contact-form textarea {
+      resize: none;
+    }
+
+    .contact-form legend,
+    .contact-form-response {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      font-size: 1rem;
+      font-family: sans-serif;
+    }
+
+    .contact-form input[type="submit"] {
+      width: 50%;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact-form *::placeholder {
+      color: #000;
+    }
+
+        /* revisar estas sentencias toman el formato valido que le declarams en pattern y required de cada input y si está correcto activará 
+        estos valores css*/
+    .contact-form [required]:valid {
+      border: thin solid var(--form-ok-color);
+    }
+
+    .contact-form [required]:invalid {
+      border: thin solid var(--form-error-color);
+    }
+
+    .contact-form-error {
+      margin-top: -1rem;
+      font-size: 80%;
+      background-color: var(--form-error-color);
+      color: #fff;
+      transition: all 800ms ease;
+    }
+
+    .contact-form-error.is-active {
+      display: block;
+      animation: show-message 1s 1 normal 0s ease-out both;
+    }
+
+    .contact-form-loader {
+      text-align: center;
+    }
+
+    .none {
+      display: none;
+    }
+
+    @keyframes show-message {
+      0% {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      100% {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+</style>
+<body>
+    <legend>Cuéntanos tus inquietudes</legend>
+    <form class="contact-form" action="https://formsubmit.co/mfcardone@altercity.com.ar" method="POST" target="_blank">
+        <input type="text" name="name" placeholder="Escribe tu nombre" title="Solo acepta texto " pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+        <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+        <input type="text" name="subject" placeholder="Asunto a tratar" title="El asunto es requerido" required>
+        <textarea name="comments" placeholder="Escribe tus comentarios" cols="50" rows="5" title="Tus comentarios no deben exceder los 250 caracteres" data-pattern="^.{1,250}$" required></textarea>
+        <input type="submit" value="Enviar">
+        <div class="contact-form-loader none">
+            <img src="img/Loading_icon.gif" alt="cargando">
+        </div>
+
+    </form>
+
+    <script>
+      
+const d= document ;
+
+
+     function contactFormValidation () {
+        const $form= d.querySelector(".contact-form"),
+        $inputs= d.querySelectorAll (".contact-form [required]") ;
+        console.log ($inputs)
+
+        $inputs.forEach ((input) => {
+          const $span = d.createElement ("span");
+          $span.id = input.name ;
+          $span.textContent = input.title;
+          $span.classList.add("contact-form-error","none");
+          input.insertAdjacentElement ("afterend",$span);
+        });
+
+        d.addEventListener ("submit", (e) => {
+          alert ("Enviando formulario");
+          const $loader= d.querySelector (".contact-form-loader");
+          const $response=d.querySelector (".contact-form-response");
+          $loader.classList.remove ("none");
+
+          /* aquí dentro de fetch"" pondremos la ubicación (en este caso el dominio )del archivo php que es el que llevará la información de la petición a la API*/
+          fetch("", {
+            method:POST,
+            body: new FormData(e.target),
+            mode:"cors", /* IMPORTANTE!! activar modo cors permite hacer intercambio cuando paginas tienen diferentes servidores, sino podria dar error de intercambio
+            esto por parte del formulario pero en el archivo php debo poner una header (Acces-control-allow-origin), para estar en consonancia con la cabecera
+            que nos pide la API (linea 37)*/
+          })
+          .then(res=> res.ok? res.json(): Promise.reject(res))
+          .then(json=>{
+            console.log (json);
+            $loader.classList.add ("none");
+            $response.classList.remove ("none");
+            $response.innerHTML = '${json.message}';
+            $form.reset();
+
+          })
+          .catch(err => {
+            console.log (err);
+            let message= err.statusText|| "Ocurrió un error, intenta nuevamente";
+            $response.innerHTML= 'Error ${err.status}';
+          })
+          
+        })
+
+        d.addEventListener ("keyup", (e) =>{
+          debugger
+          if (e.target.matches(".contact-form [required]")){
+            let $input= e.target,
+            pattern= $input.pattern || $input.dataset.pattern;
+
+            if (pattern && $input.value !=="") {
+              console.log ("existe parametro");
+              /* 
+              LAS EXPRESIONES REGULARES SIRVEN PARA FILTRAR EN BUSQUEDA O VALIDAR INPUT QUE QUERAMOS CUMPLAN ALGUNAS REGLAS. 
+              EXISTE UN METODO REG EXP PARA CREARLAS, Y SE EJECUTAN CON EXEC.-- A CONTINUACION CMO HACERLO
+              si existe un pattern en esos input se creará a continuación una varible "regex"
+              donde se va guardar una nueva Regexp --- (expresion regular), cuyo metodo de creacion es
+              new reg exp , y entre parentesis se asigna ese string que tiene pattern con la exp. regular
+              para ejecutarla se hace con el metodo exec.regex 
+              MIRCCHA 102 // CASI AL FINAL
+              */
+              let regex = new RegExp (pattern);
+              return !regex.exec($input.value)? /* si regex no valida patron $input.value, entonces mandar mensaje de error
+              "aparecera la classlist is active que guarda el mensaje de error"*/
+              d.getElementById ($input.name).classList.add("is-active")
+              :
+              d.getElementById ($input.name).classList.remove("is-active")
+
+            }
+
+            if (!pattern) {
+              console.log ("el input no tiene patron");
+              return $input.value === ""?
+              d.getElementById ($input.name).classList.add("is-active")
+              :
+              d.getElementById ($input.name).classList.remove("is-active")
+
+            }
+          }
+        })
+
+      }
+
+      contactFormValidation ()
+    </script>
+</body>
+</html>
