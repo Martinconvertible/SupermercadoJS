@@ -1,0 +1,435 @@
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    height: 15%;
+    width: 100%;
+    z-index: 1;
+    
+}
+
+.card {
+    margin-right: 1.5%;
+    align-items: end;
+    cursor: pointer;
+}
+
+
+.buscador {
+    width: 75%;
+    margin: auto;
+    padding-top: 18px;
+    align-self: center;
+}
+
+#buscar {
+    width: 100%;
+    align-self: center;
+}
+
+.botonbuscar {
+    margin-top: 10px;
+    height: 40px;
+    width: 45%;
+    align-self: center;
+}
+
+
+.containertot{
+    display: flex;
+    flex-direction: column;
+}
+
+.d-flex{
+    margin: auto;
+    width: 50%;
+    cursor: text;
+}
+
+
+
+html,body {
+    width: 100%;
+    height: 100%;
+    /*display: flex ;*/
+    margin: 0%;
+    }
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: space-evenly;
+    padding-top: 1%;
+    margin-left: 4%;
+    width: 85%;
+
+    
+    
+}
+
+.inputs {
+    /*display: none;*/ /* esto impide que se vea cuando llamo a la tarjeta dssd*/
+    width: 25%;
+    position: absolute;
+    border-radius: 10px;
+    border-color: rgb(169, 169, 169);
+    margin-top: 1%;
+    background-color: beige;
+    z-index: 12;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size:larger;
+    margin-left: 35%;
+    
+}
+
+
+
+.iconocanasta {
+    cursor: pointer;
+    flex-wrap: wrap;
+    width: 8%;
+    justify-content:space-around ;
+    position: relative;
+    }
+
+.cancelar {
+    height: 5%;
+}
+
+.marcocarrito{
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+}
+
+.imagenpng {
+    margin-top: 8%;
+    height: 65%;
+    width: 65%;
+    
+}
+
+.tachito {
+    height: 25px;
+}
+.numerosobrecanasta {
+    background-color: red;
+    height: 25%;
+    width: 25%;
+    border-color: #f0f8ff;
+    border: solid 2px white;
+    border-radius: 50%;
+    font-size: 150%;
+    font-weight: 700;
+    color: #f0f8ff;
+    position: absolute;
+    left: -15px;
+    top: 30px;
+    margin: auto ;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    
+}
+
+.tarjetaproducto {
+    flex-basis: 300px;
+    /*display: inherit;*/
+    flex-direction: column;
+    padding: 15px;
+    overflow: hidden;
+    width: 20%;
+    border-width: 1;
+    border-style: solid;
+    border-color: rgb(236, 236, 236);
+    text-align: center;
+    background-color: '#fcfcfc';
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px -6px rgb(229, 229, 229);
+    cursor: pointer;
+} 
+
+.cardImage {
+    overflow: hidden;
+    image-rendering: auto;
+}
+ 
+
+.carritor { 
+  position: absolute;
+  padding: 3%;
+  margin-top: 3%;
+  margin-left: 20%;
+  margin-bottom: 15%;
+  height: 60%;
+  width: 60%;
+  display:none ;
+  flex-direction: column;
+  background-color: aqua;
+  z-index: 6;
+  border-radius: 2%;
+  opacity: 100%;
+}
+
+#pancomplet {
+    position: absolute;
+    margin-top: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(243, 245, 152,0.3);
+    display: none;
+    z-index: 3; 
+}
+
+.titulocarrito {
+    display: flex;
+    justify-content: space-between;
+}
+
+#ofertosa {
+    display: flex;
+    justify-content:space-between;
+    width: 100%;
+}
+
+.ofertario {
+    width: 100%;
+    display:flex ;
+    justify-content:space-around;
+    height: auto;
+}
+
+.carritoDeCompra {
+
+    padding: 0%;
+    width: 100%;
+    background-color: rgb(136, 199, 121);
+    /*cursor:url("guatec.png")40 60, auto ;*/
+    display: flex;
+    justify-content: space-around;
+   
+}
+
+.opcion1, .opcion2 , .opcion3 {
+    cursor: pointer;
+    border-right: solid;
+    border-color: rgb(230, 228, 228);
+    border-width: 1px;
+    width: 10%;
+    align-self: start;
+    color: #535455;
+
+}
+
+.opcion3 {
+    width: 22%;
+}
+
+.opciones {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5%;
+    
+    
+}
+
+.opcion :hover {
+    color: aliceblue;
+}
+.opcion  {
+    vertical-align: bottom;
+}
+.prodcarr {
+    z-index: 6;
+    background-color: brown;
+    opacity: 100%;
+}
+
+.tarjetacanti {
+    align-self: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 15%;
+    background-color: darkgoldenrod;
+    border-radius: 5%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    box-shadow: 0px 10px 10px -6px rgb(66, 60, 60);
+    color: #f0f8ff;
+    border-color: rgb(218, 191, 156);
+    border-width: 1px;
+    border-style: solid;
+    z-index: 16;
+
+}
+
+h1{
+    color: #e1e5e9;
+}
+
+.envios {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 0%; 
+    background-color: rgb(71, 156, 98);
+}
+
+.cuadrito {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    align-self: center;
+    margin: auto;
+}
+
+.card-title {
+    font-size: 25px;
+    font-weight: 900;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    
+}
+
+.card-text {
+    font-weight: 400;
+    font-size: 2rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+}
+
+.slide{
+    margin: auto;
+    max-width: 1100px;
+    }
+
+.publi0{
+    
+    border-right-style: solid;
+    border-right-color: dimgray;
+    border-width: 0.1mm;
+    max-height: 100%;
+
+}
+
+
+.publi1{
+    height: 50%;
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-color: dimgray;
+    border-width: 0.1mm;
+    overflow: hidden;
+}
+
+.publi2{
+    height: 50%;
+}
+
+.publicidades {
+    width: 100%;
+}
+
+.contenido{
+    margin-top: 1%;
+    margin-left: 10%;
+    display: flex;
+    width: 90%;
+    max-height: 70%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.ofertacartel {
+    position: absolute;
+    margin: auto;
+}
+
+
+@media screen and (max-width:768px) {
+   
+    .opcion1, .opcion2 ,.opcion3 {
+        display: none;
+    } 
+    .iconocanasta {
+        width: 100px;
+        margin-right: 0px;
+    }
+    .carritoDeCompra {
+        min-height: 120px;
+        padding-left: 20px;
+        justify-content: space-between;
+    }
+
+    .buscador{
+        align-self: center;
+        padding-top: 8px;
+        
+    }
+    #buscar {
+        width: 60%;
+        margin-left: 15%;
+    }
+    .inputs {
+        /*display: none;*/ /* esto impide que se vea cuando llamo a la tarjeta dssd*/
+        width: 70%;
+        position: absolute;
+        border-radius: 10px;
+        border-color: rgb(169, 169, 169);
+        margin-top: 1%;
+        background-color: beige;
+        z-index: 10;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size:larger;
+        margin-left: 15%;
+        
+    }
+
+    #input {
+        width:150px;
+    }
+    
+}
+
+@media screen and (min-width:769px) {
+    .inputs {
+        /*display: none;*/ /* esto impide que se vea cuando llamo a la tarjeta dssd*/
+        width: 40%;
+        position: absolute;
+        border-radius: 10px;
+        border-color: rgb(169, 169, 169);
+        margin-top: 5%;
+        background-color: beige;
+        z-index: 10;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size:larger;
+        
+        
+    }
+    #input {
+        width:180px;
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .inputs {
+        /*display: none;*/ /* esto impide que se vea cuando llamo a la tarjeta dssd*/
+        width: 20%;
+        position: absolute;
+        border-radius: 10px;
+        border-color: rgb(169, 169, 169);
+        margin-top: 5%;
+        background-color: beige;
+        z-index: 10;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        font-size:larger;
+        
+        
+    }
+    #input {
+        width:180px;
+    }
+}
