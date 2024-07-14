@@ -24,7 +24,7 @@ var banderaprods=0
 
 const productos = [
     {id: 001, image: "images/medialuna.jpg", nombre: "Medialunas dulces", precio: 50 , carrito:"medialuna", hashtag: "Factura, Medialuna", descripcion:"Producto 100% artesanal", oferta: 1},
-    {id: 002, image: "images/medialunasal.jpg", nombre: "Medialunas saladas", precio: 50 , carrito:"medialunasalada",hashtag: "Factura, Medialuna", descripcion:"Producto 100% artesanal", oferta: 1},
+    {id: 002, image: "images/medialunasal.jpg", nombre: "Tortilunas saladas", precio: 50 , carrito:"medialunasalada",hashtag: "Factura, Medialuna", descripcion:"Producto 100% artesanal", oferta: 1},
     {id: 003, image: "images/medialunasdulce.jpg", nombre: "Medialunas dulce de leche", precio: 55 , carrito:"medialunadulce",hashtag: "Factura, Medialuna", descripcion:"Producto 100% artesanal", oferta: 0},
     {id: 004, image: "images/tortilladelgada.jpg", nombre: "Tortillas delgadas", precio: 35, carrito:"tortillaflaca",hashtag: "Tortilla, Bollo,", descripcion:"Horneado a leña", oferta: 1},
     {id: 100, image: "images/vino3.jpg", nombre: "Vino maimará", precio: 935, carrito:"Vino maimará",hashtag: "Vino, Alcohol, Malbec", descripcion:"Vino de Bilbao", oferta:1},
