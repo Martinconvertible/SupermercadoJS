@@ -108,7 +108,7 @@
 </style>
 <body>
     <legend>Cuéntanos tus inquietudes</legend>
-    <form class="contact-form" method="POST" target="_blank">
+    <form class="contact-form" method="POST" target="_blank" netlify>
         <input type="text" name="name" placeholder="Escribe tu nombre" title="Solo acepta texto " pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
         <input type="email" name="email" placeholder="Escribe tu email" title="Email incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
         <input type="text" name="subject" placeholder="Asunto a tratar" title="El asunto es requerido" required>
@@ -164,7 +164,7 @@ const d= document ;
           .catch(err => {
             console.log (err);
             let message= err.statusText|| "Ocurrió un error, intenta nuevamente";
-            $response.innerHTML= 'Error ${err.status}';
+            $response.innerHTML= 'Error ${err.status}';*/
           })
           
         })
